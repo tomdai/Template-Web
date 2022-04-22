@@ -9,7 +9,7 @@
 		"terser": "^5.12.1"
 	},
 	"scripts": {
-		"minify-html": "html-minifier-terser --case-sensitive --collapse-boolean-attributes --collapse-inline-tag-whitespace --collapse-whitespace --decode-entities --no-html5 --minify-css true --minify-js true --process-conditional-comments --remove-attribute-quotes --remove-comments --remove-empty-attributes --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --sort-attributes --sort-class-name --use-short-doctype --input-dir './output' --output-dir './output'",
+		"minify-html": "foreach -g './output/**/*.html' -x 'html-minifier-terser --case-sensitive --collapse-boolean-attributes --collapse-inline-tag-whitespace --collapse-whitespace --decode-entities --no-html5 --minify-css true --minify-js true --process-conditional-comments --remove-attribute-quotes --remove-comments --remove-empty-attributes --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --sort-attributes --sort-class-name --use-short-doctype -o #{path} #{path}'",
 		"minify-css": "foreach -g './output/**/*.css' -x 'cleancss -o #{path} -O2 #{path}'",
 		"minify-js": "foreach -g './output/**/*.js' -x 'terser #{path} -o #{path} -c -m --ecma 2015 --toplevel'",
 		"dev": "astro dev",
