@@ -1,0 +1,19 @@
+{
+	"private": true,
+	"devDependencies": {
+		"astro": "^1.0.0-beta.17",
+		"clean-css-cli": "^5.6.0",
+		"foreach-cli": "^1.8.1",
+		"html-minifier-terser": "^7.0.0-alpha.2",
+		"sass": "^1.50.1",
+		"terser": "^5.12.1"
+	},
+	"scripts": {
+		"minify-html": "html-minifier-terser --case-sensitive --collapse-boolean-attributes --collapse-inline-tag-whitespace --collapse-whitespace --decode-entities --no-html5 --minify-css true --minify-js true --process-conditional-comments --remove-attribute-quotes --remove-comments --remove-empty-attributes --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --sort-attributes --sort-class-name --use-short-doctype --input-dir './output' --output-dir './output'",
+		"minify-css": "foreach -g './output/**/*.css' -x 'cleancss -o #{path} -O2 #{path}'",
+		"minify-js": "foreach -g './output/**/*.js' -x 'terser #{path} -o #{path} -c -m --ecma 2015 --toplevel'",
+		"dev": "astro dev",
+		"build": "astro build && npm run minify-html && npm run minify-css && npm run minify-js",
+		"preview": "astro preview"
+	}
+}

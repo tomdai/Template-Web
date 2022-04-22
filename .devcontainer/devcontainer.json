@@ -1,0 +1,7 @@
+{
+	"image": "ghcr.io/tomdai/devcontainer-node",
+	"extensions": [
+		"github.copilot",
+		"astro-build.astro-vscode",
+	],
+}
